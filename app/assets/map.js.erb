@@ -1,0 +1,22 @@
+$(document).ready(function () {
+alert("this works");            
+                var mapOptions = {
+                    center: new google.maps.LatLng(35.10, -106.57),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                var map = new google.maps.Map(document.getElementById("map_canvas"),
+                        mapOptions);
+                    
+                var parkLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/parksandrec/parks/CityParks.kmz');
+                var openspaceLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/openspace/CityOpenSpace.kmz');
+                var publicartLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/art/publicart/PublicArt.kmz');
+                var bikepathLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/bikepaths/BikePaths.kmz');
+                    
+                parkLayer.setMap(map);
+                openspaceLayer.setMap(map);
+//                publicartLayer.setMap(map);
+                bikepathLayer.setMap(map);
+                    
+)};
+

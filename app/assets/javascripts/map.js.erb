@@ -1,0 +1,33 @@
+var map;
+var parkLayer;
+var openspaceLayer;
+var bikepathLayer;
+var citylimitLayer;
+var transitroutesLayer;
+
+$(document).ready(function () {
+           
+                var mapOptions = {
+                    center: new google.maps.LatLng(35.10, -106.57),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                map = new google.maps.Map(document.getElementById("map_canvas"),
+                        mapOptions);
+                    
+                parkLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/parksandrec/parks/CityParks.kmz');
+                openspaceLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/openspace/CityOpenSpace.kmz');
+                publicartLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/art/publicart/PublicArt.kmz');
+                bikepathLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/bikepaths/BikePaths.kmz');
+                citylimitLayer = new google.maps.KmlLayer('http://data.cabq.gov/government/citylimits/abqcitylimits.kmz');
+                transitroutesLayer = new google.maps.KmlLayer('http://data.cabq.gov/transit/routesandstops/transitroutes.kmz');
+                   
+                parkLayer.setMap(map);
+                openspaceLayer.setMap(map);
+//                publicartLayer.setMap(map);
+                bikepathLayer.setMap(map);
+//                citylimitLayer.setMap(map);
+//                transitroutesLayer.setMap(map);
+                   
+});
+
