@@ -6,6 +6,12 @@ var publicartLayer;
 var bikepathLayer;
 var citylimitLayer;
 var transitroutesLayer;
+//var park;
+var openspace;
+var publicart;
+var bikepaths;
+var citylimits;
+var transitroutes;
 
 $(document).ready(function () {
            
@@ -26,33 +32,33 @@ $(document).ready(function () {
                 
 });            
                 /* Displaying mashup when checkbox is checked */
-                var park = $("input[name = 'park']:checked");
-                var openspace = $("input[name = 'openspace']:checked");
-                var publicart = $("input[name = 'publicart']:checked");
-                var bikepaths = $("input[name = 'bikepaths']:checked");
-                var citylimits = $("input[name = 'citylimits']:checked");
-                var transitroutes = $("input[name = 'transitroutes']:checked");
+                
 function show() {  
-                  
+                  park = $('#park').is(":checked");
+                  openspace = $('#openspace').is(":checked");
+                  publicart = $('#publicart').is(":checked");
+                  bikepaths = $('#bikepaths').is(":checked");
+                  citylimits = $('#citylimits').is(":checked");
+                  transitroutes = $('#transitroutes').is(":checked");
                   if(park){
                     parkLayer.setMap(map);
                      }
-                  else if (openspace) {
+                  if (openspace) {
                     openspaceLayer.setMap(map);
                      }
-                  else if(publicart) {
+                  if(publicart) {
                      publicartLayer.setMap(map);
                      }
-                  else if(bikepaths) {
+                  if(bikepaths) {
                      bikepathLayer.setMap(map);
                      }
-                  else if(citylimits) {
+                  if(citylimits) {
                      citylimitLayer.setMap(map);
                      }
-                  else if(transitroutes) {
+                  if(transitroutes) {
                      transitroutesLayer.setMap(map);
                      }
-                  /*else if (park && openspace) {
+                  else if (park && openspace) {
                      parkLayer.setMap(map);
                      openspaceLayer.setMap(map);
                      }
@@ -112,44 +118,186 @@ function show() {
                     citylimitLayer.setMap(map);
                     transitroutesLayer.setMap(map);
                   }
-                  else if (park && openspace) {
-                    if(publicart){
+                  else if(park && openspace && publicart){
                       parkLayer.setMap(map);
                       openspaceLayer.setMap(map);
                       publicartLayer.setMap(map);
-                      if(bikepaths){
-                       bikepathLayer.setMap(map); 
-                       if(citylimits){
-                        citylimitLayer,setMap(map);
-                        }
-                       else if(transitroutes) {
-                        transitroutesLayer.setMap(map);
-                        }  
-                      }
-                      else if(citylimits){
-                       citylimitLayer,setMap(map);
-                       if(transitroutes) {
-                        transitroutesLayer.setMap(map);
-                       }
-                       }
-                       else if(transitroutes) {
-                        transitroutesLayer.setMap(map);
-                       }
-                    }
-                    else if(bikepaths){
+                  }
+                  else if(park && openspace && bikepaths){
                       parkLayer.setMap(map);
                       openspaceLayer.setMap(map);
                       bikepathLayer.setMap(map);
-                    }
-                    else if(citylimits){
+                  }
+                  else if(park && openspace && citylimits){
                       parkLayer.setMap(map);
                       openspaceLayer.setMap(map);
                       citylimitLayer.setMap(map);
-                    }
-                    else if(transitroutes){
+                  }
+                  else if(park && openspace && transitroutes){
                       parkLayer.setMap(map);
                       openspaceLayer.setMap(map);
                       transitroutesLayer.setMap(map);
-                    }
-                  }*/
+                  }
+                  else if(park && publicart && bikepaths){
+                      parkLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map); 
+                  }
+                  else if(park && publicart && citylimits){
+                      parkLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      citylimitLayer.setMap(map); 
+                  }
+                  else if(park && publicart && transitroutes){
+                      parkLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      transitroutesLayer.setMap(map); 
+                  }
+                  else if(park && bikepaths && citylimits){
+                      parkLayer.setMap(map);
+                      bikepathLayer.setMap(map); 
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(park && bikepaths && transitroutes){
+                      parkLayer.setMap(map);
+                      bikepathLayer.setMap(map); 
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(openspace && publicart && bikepaths){
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);    
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(openspace && publicart && citylimits){
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);    
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(openspace && publicart && transitroutes){
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);    
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(openspace && bikepaths && citylimits){
+                      openspaceLayer.setMap(map);
+                      citylimitLayer.setMap(map);    
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(openspace && bikepaths && transitroutes){
+                      openspaceLayer.setMap(map);   
+                      bikepathLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(openspace && citylimits && transitroutes){
+                      openspaceLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(publicart && bikepaths && citylimits){
+                      publicartLayer.setMap(map);    
+                      bikepathLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(publicart && bikepaths && transitroutes){
+                      publicartLayer.setMap(map);    
+                      bikepathLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(bikepaths && citylimits && transitroutes){
+                      publicartLayer.setMap(map);    
+                      bikepathLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(park && openspace && publicart && bikepaths){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(park && openspace && publicart && citylimits){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(park && openspace && publicart && transitroutes){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(park && openspace && bikepaths && citylimits){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(park && openspace && bikepaths && transitroutes){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(park && openspace && citylimits && transitroutes){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(park && publicart && bikepaths && citylimits){
+                      parkLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(park && publicart && bikepaths && transitroutes){
+                      parkLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(park && publicart && citylimits && transitroutes){
+                      parkLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(park && bikepaths && citylimits && transitroutes){
+                      parkLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                  }
+                  else if(openspace && publicart && bikepaths && citylimits){
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(openspace && publicart && bikepaths && transitroutes){
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
+                  else if(openspace && bikepaths && citylimits && transitroutes){
+                      openspaceLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(publicart && bikepaths && citylimits && transitroutes){
+                      transitroutesLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                  }
+                  else if(park && openspace && bikepaths && citylimits && transitroutes){
+                      park.setMap(map);
+                      openspaceLayer.setMap(map);
+                      publicartLayer.setMap(map);
+                      bikepathLayer.setMap(map);
+                      citylimitLayer.setMap(map);
+                      transitroutesLayer.setMap(map);
+                  }
                }                               
