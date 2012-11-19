@@ -1,11 +1,11 @@
 var map;
 
-var parkswitch = true;
-var openspaceswitch = false;
-var publicartswitch = false;
-var bikepathswitch = true;
-var citylimitswitch = false;
-var transitroutesswitch = true;
+var parkLayer;
+var openspaceLayer;
+var publicartLayer;
+var bikepathLayer;
+var citylimitLayer;
+var transitroutesLayer;
 
 $(document).ready(function () {
            
@@ -17,49 +17,139 @@ $(document).ready(function () {
                 map = new google.maps.Map(document.getElementById("map_canvas"),
                         mapOptions);
                     
-                var parkLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/parksandrec/parks/CityParks.kmz');
-                var openspaceLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/openspace/CityOpenSpace.kmz');
-                var publicartLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/art/publicart/PublicArt.kmz');
-                var bikepathLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/bikepaths/BikePaths.kmz');
-                var citylimitLayer = new google.maps.KmlLayer('http://data.cabq.gov/government/citylimits/abqcitylimits.kmz');
-                var transitroutesLayer = new google.maps.KmlLayer('http://data.cabq.gov/transit/routesandstops/transitroutes.kmz');
-                   
-                if (parkswitch) {
+                 parkLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/parksandrec/parks/CityParks.kmz');
+                 openspaceLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/openspace/CityOpenSpace.kmz');
+                 publicartLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/art/publicart/PublicArt.kmz');
+                 bikepathLayer = new google.maps.KmlLayer('http://data.cabq.gov/community/bikepaths/BikePaths.kmz');
+                 citylimitLayer = new google.maps.KmlLayer('http://data.cabq.gov/government/citylimits/abqcitylimits.kmz');
+                 transitroutesLayer = new google.maps.KmlLayer('http://data.cabq.gov/transit/routesandstops/transitroutes.kmz');
+                
+});            
+                /* Displaying mashup when checkbox is checked */
+                var park = $("input[name = 'park']:checked");
+                var openspace = $("input[name = 'openspace']:checked");
+                var publicart = $("input[name = 'publicart']:checked");
+                var bikepaths = $("input[name = 'bikepaths']:checked");
+                var citylimits = $("input[name = 'citylimits']:checked");
+                var transitroutes = $("input[name = 'transitroutes']:checked");
+function show() {  
+                  
+                  if(park){
+                    parkLayer.setMap(map);
+                     }
+                  else if (openspace) {
+                    openspaceLayer.setMap(map);
+                     }
+                  else if(publicart) {
+                     publicartLayer.setMap(map);
+                     }
+                  else if(bikepaths) {
+                     bikepathLayer.setMap(map);
+                     }
+                  else if(citylimits) {
+                     citylimitLayer.setMap(map);
+                     }
+                  else if(transitroutes) {
+                     transitroutesLayer.setMap(map);
+                     }
+                  /*else if (park && openspace) {
+                     parkLayer.setMap(map);
+                     openspaceLayer.setMap(map);
+                     }
+                  else if (park && publicart) {
+                     parkLayer.setMap(map);
+                     publicartLayer.setMap(map);
+                     } 
+                  else if(park && bikepaths) {
+                     parkLayer.setMap(map);
+                     bikepathLayer.setMap(map);
+                  } 
+                  else if(park && citylimits) {
+                    parkLayer.setMap(map);
+                    citylimitLayer.setMap(map);
+                  }
+                  else if(park && transitroutes) {
+                    parkLayer.setMap(map);
+                    transitroutesLayer.setMap(map);
+                  }
+                  else if (openspace && publicart) {
+                     openspaceLayer.setMap(map);
+                     publicartLayer.setMap(map);
+                     } 
+                  else if(openspace && bikepaths) {
+                     openspaceLayer.setMap(map);
+                     bikepathLayer.setMap(map);
+                  } 
+                  else if(openspace && citylimits) {
+                    openspaceLayer.setMap(map);
+                    citylimitLayer.setMap(map);
+                  }
+                  else if(openspace && transitroutes) {
+                    openspaceLayer.setMap(map);
+                    transitroutesLayer.setMap(map);
+                  }
+                  else if(publicart && bikepaths) {
+                     publicartLayer.setMap(map);
+                     bikepathLayer.setMap(map);
+                  } 
+                  else if(publicart && citylimits) {
+                    publicartLayer.setMap(map);
+                    citylimitLayer.setMap(map);
+                  }
+                  else if(publicart && transitroutes) {
+                    publicartLayer.setMap(map);
+                    transitroutesLayer.setMap(map);
+                  }
+                  else if(bikepaths && citylimits) {
+                    bikepathLayer.setMap(map);
+                    citylimitLayer.setMap(map);
+                  }
+                  else if(bikepaths && transitroutes) {
+                    bikepathLayer.setMap(map);
+                    transitroutesLayer.setMap(map);
+                  }
+                  else if(citylimits && transitroutes) {
+                    citylimitLayer.setMap(map);
+                    transitroutesLayer.setMap(map);
+                  }
+                  else if (park && openspace) {
+                    if(publicart){
                       parkLayer.setMap(map);
-                      }
-                      else {
-                      parkLayer.setMap(null);
-                      }
-                if (openspaceswitch) {
                       openspaceLayer.setMap(map);
-                      }
-                      else {
-                      openspaceLayer.setMap(null);
-                      }
-                 if (publicartswitch) {
                       publicartLayer.setMap(map);
+                      if(bikepaths){
+                       bikepathLayer.setMap(map); 
+                       if(citylimits){
+                        citylimitLayer,setMap(map);
+                        }
+                       else if(transitroutes) {
+                        transitroutesLayer.setMap(map);
+                        }  
                       }
-                      else {
-                      publicartLayer.setMap(null);
-                      }
-                  if (bikepathswitch) {
+                      else if(citylimits){
+                       citylimitLayer,setMap(map);
+                       if(transitroutes) {
+                        transitroutesLayer.setMap(map);
+                       }
+                       }
+                       else if(transitroutes) {
+                        transitroutesLayer.setMap(map);
+                       }
+                    }
+                    else if(bikepaths){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
                       bikepathLayer.setMap(map);
-                      }
-                      else {
-                      bikepathLayer.setMap(null);
-                      }
-                  if (citylimitswitch) {
+                    }
+                    else if(citylimits){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
                       citylimitLayer.setMap(map);
-                      }
-                      else {
-                      citylimitLayer.setMap(null);
-                      }
-                   if (transitroutesswitch) {
+                    }
+                    else if(transitroutes){
+                      parkLayer.setMap(map);
+                      openspaceLayer.setMap(map);
                       transitroutesLayer.setMap(map);
-                      }
-                      else {
-                      transitroutesLayer.setMap(null);
-                      }
-                               
-});
-
+                    }
+                  }*/
+               }                               

@@ -2,17 +2,32 @@
         <style type="text/css">
             html { height: 100% }
             body { height: 100%; margin: 0; padding: 0 }
-            #map_canvas { height: 100% }
+            #map_canvas { height: 100%; float: left; }
+            #formalign { float: right; width: 150px }
         </style>
         <script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?sensor=false">
         </script>
-
-
-        <div id="map_canvas" style="width:800px; height:450px"></div>
+        <div id="map_canvas" style="width:700px; height:450px"></div>
+        <div id="formalign">
+        <h4>Datasets:</h4>
+        <!--h4><label for="datasets[]">Datasets:</label></h4-->
+        <%= check_box_tag 'park', 'park' %> Park 
+        <br><br>
+        <%= check_box_tag 'openspace', 'openspace' %> Open Space
+        <br><br>
+        <%= check_box_tag 'publicart', 'publicart' %> Public Art
+        <br><br>
+        <%= check_box_tag 'bikepaths', 'bikepaths' %> Bike Paths
+        <br><br>
+        <%= check_box_tag 'citylimits', 'citylimits' %> City Limits
+        <br><br>
+        <%= check_box_tag 'transitroutes', 'transitroutes' %> Transit Routes
+        <br><br>
+        <!--%= link_to_function "Show", "show()" %-->
+        <%= tag "input", { "type" => "button", "value" => "Show", "onclick" => "show()" } %>
+        </div>
         
-
-
 
 
 
